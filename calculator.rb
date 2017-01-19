@@ -47,7 +47,6 @@ end
 prompt("Hi #{name}!")
 
 loop do # main loop
-
   number1 = ''
   loop do
     prompt("What is the first number?")
@@ -95,15 +94,15 @@ loop do # main loop
   prompt("#{operation_to_message(operator)} the two numbers...")
 
   result = case operator
-            when '1'
-              number1.to_i() + number2.to_i()
-            when '2'
-              number1.to_i() - number2.to_i()
-            when '3'
-              number1.to_i() * number2.to_i()
-            when '4'
-              number1.to_f() / number2.to_f()
-  end
+           when '1'
+             number1.to_i() + number2.to_i()
+           when '2'
+             number1.to_i() - number2.to_i()
+           when '3'
+             number1.to_i() * number2.to_i()
+           when '4'
+             number1.to_f() / number2.to_f()
+           end
 
   prompt("The result is #{result}")
 
