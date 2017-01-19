@@ -37,6 +37,8 @@ loop do
 
   if name.empty?
     prompt("Please enter a valid name.")
+  elsif name.to_i != 0
+    prompt("Please enter a valid name.")
   else
     break
   end
