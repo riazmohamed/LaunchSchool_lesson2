@@ -68,48 +68,57 @@ loop do
   end
 end
 
-prompt("How much would you like to take a loan on? ")
-loan_amount = ''
 loop do
-  loan_amount = gets.chomp
-  if valid_loan_amount?(loan_amount)
-    break
-  else
-    prompt("Hmm... That dont seem right! Please enter a valid amount to lend: ")
+  prompt("How much would you like to take a loan on? ")
+  loan_amount = ''
+  loop do
+    loan_amount = gets.chomp
+    if valid_loan_amount?(loan_amount)
+      break
+    else
+      prompt("Hmm... That dont seem right! Please enter a valid amount to lend: ")
+    end
   end
-end
 
-prompt("You have requested #{loan_amount} at %5 APR")
-# annual interest rate = 5% APR
-# monthly interest rate = APR / 12 = (0.05 / 12)
+  prompt("You have requested #{loan_amount} at %5 APR")
+  # annual interest rate = 5% APR
+  # monthly interest rate = APR / 12 = (0.05 / 12)
 
-loan_term_prompt = <<-MSG
-  Please choose the following loan term
-  1) 36 months
-  2) 42 months
-  3) 60 months
-MSG
+  loan_term_prompt = <<-MSG
+    Please choose the following loan term
+    1) 36 months
+    2) 42 months
+    3) 60 months
+  MSG
 
-prompt(loan_term_prompt)
+  prompt(loan_term_prompt)
 
-loan_term = gets.chomp
+  loan_term = ''
+  loop do
+    loan_term = gets.chomp
+    if %w(1 2 3).include?(loan_term)
+      break
+    else
+      prompt("Please enter a valid selection 1) 2) or 3)")
+    end
+  end
 
-case loan_term
-when '1'
-  prompt("You have chosen 36 months loan term")
-  loan_duration = 36
-  puts "Your monthly payment for 36 months is
-        $#{loan_calculation(loan_amount, loan_duration)}"
-when '2'
-  prompt("You have chosen 42 months loan term")
-  loan_duration = 42
-  puts "Your monthly payment for 42 months is
-        $#{loan_calculation(loan_amount, loan_duration)}"
-when '3'
-  prompt("You have chosen 60 months loan term")
-  loan_duration = 60
-  puts "Your monthly payment for 60 months is
-        $#{loan_calculation(loan_amount, loan_duration)}"
-else
-  prompt("Please make a valid selection 1) 2) or 3)")
+  case loan_term
+  when '1'
+    prompt("You have chosen 36 months loan term")
+    loan_duration = 36
+  when '2'
+    prompt("You have chosen 42 months loan term")
+    loan_duration = 42
+  when '3'
+    prompt("You have chosen 60 months loan term")
+    loan_duration = 60
+  end
+
+  puts "Your monthly payment for #{loan_duration} months is
+  $#{loan_calculation(loan_amount, loan_duration)}"
+
+  prompt("Do you want to calculate again?")
+  answer = gets.chomp.downcase
+  break unless answer.start_with?('y')
 end
