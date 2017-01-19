@@ -122,3 +122,6 @@ loop do
   answer = gets.chomp.downcase
   break unless answer.start_with?('y')
 end
+
+prompt("Thank you for using the car loan calculator")
+prompt("Goodbye!")
