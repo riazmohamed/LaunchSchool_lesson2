@@ -2,21 +2,27 @@
 
 VALID_CHOICES = ["rock", "paper", "scissors"]
 
+def test_method
+  prompt('test message')
+end
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
+
+test_method
 
 def display_results(player, computer)
   if (player == 'rock' && computer == 'scissors') ||
       (player == 'paper' && computer == 'rock') ||
       (player == 'scissors' && computer == 'paper')
-    prompt("You won!")
+    "You won!"
   elsif (player == 'rock' && computer == 'paper') ||
         (player == 'paper' && computer == 'scissors') ||
         (player == 'scissors' && computer == 'paper')
-    prompt("Computer won!")
+    "Computer won!"
   else
-    prompt("It's a tie!")
+    "It's a tie!"
   end
 end
 
@@ -35,9 +41,9 @@ loop do
 
   computer_choice = VALID_CHOICES.sample
 
-  prompt("You chose : '#{choice}' and the computer chose : '#{computer_choice}'")
+  prompt("#{display_results(choice, computer_choice)}")
 
-  display_results(choice, computer_choice)
+  prompt("You chose : '#{choice}' and the computer chose : '#{computer_choice}'")
 
   prompt("Do you want to play again?")
   answer = Kernel.gets().chomp()
