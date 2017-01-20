@@ -1,28 +1,24 @@
 # rock_paper_scissors.rb
 
-VALID_CHOICES = ["rock", "paper", "scissors"]
-
-def test_method
-  prompt('test message')
-end
+VALID_CHOICES = %w(rock paper scissors)
 
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
-test_method
+def win?(player1, player2)
+  (player1 == 'rock' && player2 == 'scissors') ||
+    (player1 == 'paper' && player2 == 'rock') ||
+    (player1 == 'scissors' && player2 == 'paper')
+end
 
 def display_results(player, computer)
-  if (player == 'rock' && computer == 'scissors') ||
-      (player == 'paper' && computer == 'rock') ||
-      (player == 'scissors' && computer == 'paper')
-    "You won!"
-  elsif (player == 'rock' && computer == 'paper') ||
-        (player == 'paper' && computer == 'scissors') ||
-        (player == 'scissors' && computer == 'paper')
-    "Computer won!"
+  if win?(player, computer)
+    prompt("You won!")
+  elsif win?(computer, player)
+    prompt("Computer won!")
   else
-    "It's a tie!"
+    prompt("It's a tie!")
   end
 end
 
@@ -41,9 +37,9 @@ loop do
 
   computer_choice = VALID_CHOICES.sample
 
-  prompt("#{display_results(choice, computer_choice)}")
+  display_results(choice, computer_choice)
 
-  prompt("You chose : '#{choice}' and the computer chose : '#{computer_choice}'")
+  prompt("You chose : '#{choice}', computer chose : '#{computer_choice}'")
 
   prompt("Do you want to play again?")
   answer = Kernel.gets().chomp()
