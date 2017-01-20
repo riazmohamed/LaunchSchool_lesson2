@@ -1,12 +1,10 @@
-# mortgage_calculator_given_example.rb
-
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 loop do
-  prompt("Welcome to the mortgage calculator")
-  prompt("----------------------------------")
+  prompt("Welcome to Mortgage Calculator!")
+  prompt("-------------------------------")
 
   prompt("What is the loan amount?")
 
@@ -15,7 +13,7 @@ loop do
     amount = Kernel.gets().chomp()
 
     if amount.empty?() || amount.to_f() < 0
-      prompt("Must enter a positive number.")
+      prompt("Must enter positive number.")
     else
       break
     end
@@ -29,7 +27,7 @@ loop do
     interest_rate = Kernel.gets().chomp()
 
     if interest_rate.empty?() || interest_rate.to_f() < 0
-      prompt("Must enter a positive number.")
+      prompt("Must enter positive number.")
     else
       break
     end
@@ -41,7 +39,7 @@ loop do
   loop do
     years = Kernel.gets().chomp()
 
-    if years.empty?() || years.to_f()
+    if years.empty?() || years.to_i() < 0
       prompt("Enter a valid number")
     else
       break
@@ -62,8 +60,7 @@ loop do
   answer = Kernel.gets().chomp()
 
   break unless answer.downcase().start_with?('y')
-
 end
 
 prompt("Thank you for using the Mortgage Calculator!")
-prompt("Good bye!
+prompt("Good bye!")
