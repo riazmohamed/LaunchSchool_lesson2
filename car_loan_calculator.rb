@@ -27,13 +27,7 @@ def prompt(message)
 end
 
 def valid_name?(name) # condition to use strings for names
-  if name.to_i.to_s != '0'
-    false
-  elsif name == '0'
-    false
-  else
-    true
-  end
+  name.to_i.to_s == '0' && name != '0'
 end
 
 def valid_loan_amount?(num)
