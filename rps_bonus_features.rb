@@ -10,14 +10,15 @@ end
 
 def win?(player1, player2)
   (player1 == 'rock' && player2 == 'scissors') || # rock smashes scissors
+    (player1 == 'rock' && player2 == 'lizard') || # rock smashses lizard
     (player1 == 'paper' && player2 == 'rock') || # paper engulfs rock
     (player1 == 'scissors' && player2 == 'paper') || # scissors cut paper
     (player1 == 'scissors' && player2 == 'lizard') || # scissors cut lizard
     (player1 == 'lizard' && player2 == 'spock') || # lizard poisons spock
     (player1 == 'lizard' && player2 == 'paper') || # lizard eats paper
-    (player1 == 'rock' && player2 == 'lizard') || # rock smashses lizard
     (player1 == 'spock' && player2 == 'rock') || # spock burns rock
     (player1 == 'spock' && player2 == 'scissors') # spock burns scissors
+    (player1 == 'spock' && player2 == 'paper') # spock burns paper
 end
 
 def display_results(player, computer)
