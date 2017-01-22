@@ -29,11 +29,11 @@ end
 # end
 
 def win?(player1, player2)
-  (player1 == 'rock' && ['scissors', 'lizard'].include?(player2))
-  (player1 == 'paper' && ['rock', 'spock'].include?(player2))
-  (player1 == 'scissors' && ['paper', 'lizard'].include?(player2))
-  (player1 == 'lizard' && ['spock', 'paper'].include?(player2))
-  (player1 == 'spock' && ['rock', 'scissors'].include?(player2))
+  (player1 == 'rock' && %w(scissors lizard).include?(player2)) ||
+    (player1 == 'paper' && %w(rock spock).include?(player2)) ||
+    (player1 == 'scissors' && %w(paper lizard).include?(player2)) ||
+    (player1 == 'lizard' && %w(spock paper).include?(player2)) ||
+    (player1 == 'spock' && %w(rock scissors).include?(player2))
 end
 
 def display_results(player, computer)
