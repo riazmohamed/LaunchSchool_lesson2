@@ -15,17 +15,25 @@ def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
+# def win?(player1, player2)
+#   (player1 == 'rock' && player2 == 'scissors') || # rock smashes scissors
+#     (player1 == 'rock' && player2 == 'lizard') || # rock smashses lizard
+#     (player1 == 'paper' && player2 == 'rock') || # paper engulfs rock
+#     (player1 == 'paper' && player2 == 'spock') # paper disproves spock
+#     (player1 == 'scissors' && player2 == 'paper') || # scissors cut paper
+#     (player1 == 'scissors' && player2 == 'lizard') || # scissors cut lizard
+#     (player1 == 'lizard' && player2 == 'spock') || # lizard poisons spock
+#     (player1 == 'lizard' && player2 == 'paper') || # lizard eats paper
+#     (player1 == 'spock' && player2 == 'rock') || # spock burns rock
+#     (player1 == 'spock' && player2 == 'scissors') || # spock burns scissors
+# end
+
 def win?(player1, player2)
-  (player1 == 'rock' && player2 == 'scissors') || # rock smashes scissors
-    (player1 == 'rock' && player2 == 'lizard') || # rock smashses lizard
-    (player1 == 'paper' && player2 == 'rock') || # paper engulfs rock
-    (player1 == 'scissors' && player2 == 'paper') || # scissors cut paper
-    (player1 == 'scissors' && player2 == 'lizard') || # scissors cut lizard
-    (player1 == 'lizard' && player2 == 'spock') || # lizard poisons spock
-    (player1 == 'lizard' && player2 == 'paper') || # lizard eats paper
-    (player1 == 'spock' && player2 == 'rock') || # spock burns rock
-    (player1 == 'spock' && player2 == 'scissors') || # spock burns scissors
-    (player1 == 'spock' && player2 == 'paper') # spock burns paper
+  (player1 == 'rock' && ['scissors', 'lizard'].include?(player2))
+  (player1 == 'paper' && ['rock', 'spock'].include?(player2))
+  (player1 == 'scissors' && ['paper', 'lizard'].include?(player2))
+  (player1 == 'lizard' && ['spock', 'paper'].include?(player2))
+  (player1 == 'spock' && ['rock', 'scissors'].include?(player2))
 end
 
 def display_results(player, computer)
@@ -90,10 +98,8 @@ loop do
   elsif win?(computer_choice, choice)
     computer_score += 1
     computer_score
-  else
-    player_score
-    computer_score
   end
+
   prompt("Score - You: #{player_score}, Computer: #{computer_score}")
 
   prompt("Do you want to play again? (y/n)")
